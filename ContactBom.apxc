@@ -1,0 +1,18 @@
+public class ContactBom {
+	@AuraEnabled
+    public static List<Contact> upsertContato(List<Contact> contatos){
+        upsert contatos; 
+        return contatos;
+    }
+
+    @AuraEnabled
+    public static void deleteContato(List<Contact> lixeira){
+        delete lixeira; 
+    }
+    
+    @AuraEnabled
+    public static List<Contact> returnContato(){
+        List<Contact> rtn = new List<Contact>([SELECT Id, FirstName, LastName, Phone FROM Contact]);
+        return rtn;
+    }
+}
