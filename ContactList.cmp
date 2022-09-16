@@ -1,0 +1,61 @@
+<aura:component controller="ContactBom" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+    <aura:attribute name="ListaContatos" type="Contact[]"></aura:attribute>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="cttLst" type="Contact[]"></aura:attribute>
+    <aura:attribute name="lixeira" type="list" default="[]"/>
+    
+    <lightning:card title="Lista de Contatos" iconName="standard:contact">
+    <div class="slds-card__body">            
+        <table class="slds-table slds-table_bordered slds-no-row-hover slds-table_cell-buffer">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col">
+                        <div class="slds-truncate" title="name">FirstName</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="fname">Lastname</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="phone">Phone</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.cttLst}" var="ctt" indexVar="index">
+                    <tr class="slds-hint-parent">
+                        <th scope="row">
+                            <lightning:input name="firstname" type="text" value="{!ctt.FirstName}" placeholder="FirstName"/>
+                            <div class="slds-truncate"></div>
+                        </th>
+                        <td>
+                            <lightning:input name="lastname" type="text" value="{!ctt.LastName}" placeholder="LastName"/>
+                        </td>
+                        <td>
+                            <lightning:input name="phone" type="text" value="{!ctt.Phone}" placeholder="Phone"/>	
+                        </td>
+                        <td>
+                            <lightning:button label="Remover" onclick="{!c.deletarLinhaContato}" name="{!index}"></lightning:button>
+                        </td>
+                    </tr>
+                </aura:iteration>
+                <lightning:button label="Salvar" onclick="{!c.saveCont}"/>
+            </tbody>
+        </table>
+        </div>
+        <aura:set attribute="actions">
+        	<lightning:button label="Novo Contato" onclick="{!c.addCont}"></lightning:button>
+        </aura:set>
+        <!--  <aura:iteration items="{!v.contList}" var="contact" indexVar="pata">
+        	<div id="dv">
+                <lightning:input name="nome" type="text" placeholder="Nome" value="{!contact.FirstName}"/>
+                <lightning:input name="sobrenome" type="text" placeholder="Sobrenome" value="{!contact.LastName}"/>
+                <lightning:input name="telefone" type="text" placeholder="Telefone" value="{!contact.Phone}"/>
+                <lightning:button label="Remover" onclick="{!c.deletarLinhaContato}" name="{!pata}"></lightning:button>
+            </div>
+        </aura:iteration>
+        <lightning:button label="Salvar" onclick="{!c.saveCont}"/>
+-->
+        </lightning:card>
+    
+</aura:component>
