@@ -1,4 +1,4 @@
-public class ServicePetShop implements InterfaceServicoPetShop{
+public class ServicePetShop implements IServicoPetShop{
     public Cachorro adotar(String raca){
         Cachorro diego = new Cachorro();  
         diego.setRaca(raca);
