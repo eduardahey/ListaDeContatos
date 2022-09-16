@@ -1,0 +1,3 @@
+public interface InterfaceServicoPetShop{
+    Cachorro adotar(String raca);
+}
